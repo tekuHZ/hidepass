@@ -8,8 +8,8 @@ print("The password is: "password)
 
 ## Instalacion 
 
--$ python setup.py sdist
--$ cd dist/
--$ pip install hidepass.tar.gz
+- python setup.py sdist
+- cd dist/
+- pip install hidepass.tar.gz
 
-Listo !!!
+Listo :)
