@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import termios 
 import tty
 import sys

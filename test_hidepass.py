@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import hidepass
 
 password = hidepass.hidepass("Password: ")

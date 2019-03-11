@@ -1,8 +1,9 @@
+#!/usr/bin/python3
 import sys
 import os
 
 try:
-	import getput
+	from .getput import getchar,putchar
 except ImportError:
 	import msvcrt
 
@@ -15,7 +16,7 @@ def hidepass(prompt = "",
 
 	for i in prompt:
 		if os.name == "posix":
-			getput.putchar(i)
+			putchar(i)
 
 		elif os.name == "nt" or os.name == "dos":
 			msvcrt.putwch(i)
@@ -23,8 +24,8 @@ def hidepass(prompt = "",
 	while True:
 
 		if  os.name == "posix":
-			captureKey = getput.getchar()
-				
+			captureKey = getchar()
+
 		elif os.name == "nt" or os.name == "dos":
 			captureKey = msvcrt.getwch()
 
@@ -38,9 +39,9 @@ def hidepass(prompt = "",
 
 			if count >= 0:
 				if os.name == "posix":
-					getput.putchar("\b")
-					getput.putchar(" ")
-					getput.putchar("\b")
+					putchar("\b")
+					putchar(" ")
+					putchar("\b")
 				elif os.name == "nt" or os.name == "dos":
 					msvcrt.putwch("\b")
 					msvcrt.putwch(" ")
@@ -54,8 +55,8 @@ def hidepass(prompt = "",
 			count += 1
 
 			if os.name == "posix":
-				getput.putchar(replaceChar)
-					
+				putchar(replaceChar)
+
 			elif os.name == "nt" or os.name == "dos":
 				msvcrt.putwch(replaceChar)
 
@@ -66,4 +67,3 @@ def hidepass(prompt = "",
 if __name__ == '__main__':
 	pswd = hidepass("Passsword: ")
 	print("The password is: ",pswd)
-	
