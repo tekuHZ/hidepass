@@ -2,4 +2,4 @@ import hidepass
 
 password = hidepass.hidepass("Password: ")
 
-print(password)
+print("The password is: ",password)

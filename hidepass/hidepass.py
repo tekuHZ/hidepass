@@ -1,27 +1,29 @@
 import sys
 import os
 
-
 try:
-	import tts
+	import getput
 except ImportError:
 	import msvcrt
-	
-def hidepass(prompt = "", replaceChar = "*"):
+
+def hidepass(prompt = "",
+			 replaceChar = "*"):
+
 	password = ""
 	count = 0
 	backspace = chr(127)
 
 	for i in prompt:
 		if os.name == "posix":
-			tts.putch(i)
+			getput.putch(i)
 
 		elif os.name == "nt" or os.name == "dos":
 			msvcrt.putwch(i)
 
 	while True:
+
 		if  os.name == "posix":
-			captureKey = tts.getch()
+			captureKey = getput.getch()
 				
 		elif os.name == "nt" or os.name == "dos":
 			captureKey = msvcrt.getwch()
@@ -31,14 +33,14 @@ def hidepass(prompt = "", replaceChar = "*"):
 			break
 
 		if captureKey == "\b" or captureKey == backspace:
-			password = password [:-1]
+			password = password [ :-1 ]
 			count -= 1
 
 			if count >= 0:
 				if os.name == "posix":
-					tts.putch("\b")
-					tts.putch(" ")
-					tts.putch("\b")
+					getput.putch("\b")
+					getput.putch(" ")
+					getput.putch("\b")
 				elif os.name == "nt" or os.name == "dos":
 					msvcrt.putwch("\b")
 					msvcrt.putwch(" ")
@@ -47,14 +49,16 @@ def hidepass(prompt = "", replaceChar = "*"):
 		else:
 			if count <= 0:
 				count = 0
+
 			password += captureKey
 			count += 1
 
 			if os.name == "posix":
-				tts.putch(replaceChar)
+				getput.putch(replaceChar)
 					
 			elif os.name == "nt" or os.name == "dos":
 				msvcrt.putwch(replaceChar)
+
 
 	print("\n")
 	return password if password != "" else None
@@ -62,3 +66,4 @@ def hidepass(prompt = "", replaceChar = "*"):
 if __name__ == '__main__':
 	pswd = hidepass("Passsword: ")
 	print("The password is: ",pswd)
+	

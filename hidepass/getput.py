@@ -2,7 +2,7 @@ import termios
 import tty
 import sys
 
-def getch():
+def getchar():
 	fd = sys.stdin.fileno()
 	old_settings = termios.tcgetattr(fd)
 		
@@ -15,6 +15,6 @@ def getch():
 		
 	return key
 
-def putch(char):
+def putchar(char):
 	sys.stdout.write(char)
 	sys.stdout.flush()
