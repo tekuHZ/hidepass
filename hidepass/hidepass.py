@@ -15,7 +15,7 @@ def hidepass(prompt = "",
 
 	for i in prompt:
 		if os.name == "posix":
-			getput.putch(i)
+			getput.putchar(i)
 
 		elif os.name == "nt" or os.name == "dos":
 			msvcrt.putwch(i)
@@ -23,7 +23,7 @@ def hidepass(prompt = "",
 	while True:
 
 		if  os.name == "posix":
-			captureKey = getput.getch()
+			captureKey = getput.getchar()
 				
 		elif os.name == "nt" or os.name == "dos":
 			captureKey = msvcrt.getwch()
@@ -38,9 +38,9 @@ def hidepass(prompt = "",
 
 			if count >= 0:
 				if os.name == "posix":
-					getput.putch("\b")
-					getput.putch(" ")
-					getput.putch("\b")
+					getput.putchar("\b")
+					getput.putchar(" ")
+					getput.putchar("\b")
 				elif os.name == "nt" or os.name == "dos":
 					msvcrt.putwch("\b")
 					msvcrt.putwch(" ")
@@ -54,7 +54,7 @@ def hidepass(prompt = "",
 			count += 1
 
 			if os.name == "posix":
-				getput.putch(replaceChar)
+				getput.putchar(replaceChar)
 					
 			elif os.name == "nt" or os.name == "dos":
 				msvcrt.putwch(replaceChar)
