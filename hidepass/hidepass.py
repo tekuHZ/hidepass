@@ -7,8 +7,7 @@ try:
 except ImportError:
 	import msvcrt
 
-def hidepass(prompt = "",
-			 replaceChar = "*"):
+def hidepass(prompt = "", replaceChar = "*"):
 
 	password = ""
 	count = 0
